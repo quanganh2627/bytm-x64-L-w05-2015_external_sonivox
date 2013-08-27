@@ -596,7 +596,8 @@ EAS_RESULT DLSParser (EAS_HW_DATA_HANDLE hwInstData, EAS_FILE_HANDLE fileHandle,
         }
 
         /* limit check  */
-        if ((dls.artCount == 0) || (dls.artCount > DLS_MAX_ART_COUNT))
+        //if ((dls.artCount == 0) || (dls.artCount > DLS_MAX_ART_COUNT))
+        if (dls.artCount > DLS_MAX_ART_COUNT) //Fix for BZ-51232. Considering file with artCount = 0 as valid DLS file.
         {
             { /* dpp: EAS_ReportEx(_EAS_SEVERITY_ERROR, "DLS file contains invalid #articulations [%u]\n", dls.regionCount); */ }
             return EAS_ERROR_FILE_FORMAT;
